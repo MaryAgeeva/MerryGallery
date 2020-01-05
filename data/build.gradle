@@ -1,0 +1,42 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    def common = rootProject.ext.common
+    def data = rootProject.ext.data
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation common.kotlin
+    implementation common.rxJava
+    implementation data.room
+    implementation data.roomRx
+    implementation common.dagger
+    kapt data.roomProcessor
+    implementation common.appCompat
+    testImplementation common.jUnit
+    androidTestImplementation common.test
+    androidTestImplementation common.espresso
+    implementation project(':domain')
+    compileOnly 'javax.annotation:jsr250-api:1.0'
+}

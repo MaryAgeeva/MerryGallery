@@ -1,0 +1,59 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.mary.merrygallery"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    androidExtensions {
+        experimental = true
+    }
+}
+
+dependencies {
+    def common = rootProject.ext.common
+    def app = rootProject.ext.app
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation common.kotlin
+    implementation common.appCompat
+    implementation app.ktx
+    implementation common.rxJava
+    implementation common.rxAndroid
+    implementation app.rxBinding
+    implementation app.rxBindingSwipe
+    implementation app.navigation
+    implementation app.navigationUi
+    implementation app.glide
+    implementation app.lifecycle
+    implementation app.viewModel
+    implementation app.material
+    implementation app.recyclerView
+    implementation app.constraint
+    implementation app.kenBurnsView
+    implementation common.dagger
+    kapt common.daggerAnnotation
+    kapt app.daggerAndroid
+    kapt app.glideProcessor
+    testImplementation common.jUnit
+    androidTestImplementation common.test
+    androidTestImplementation common.espresso
+    debugImplementation app.leakCanaryDebug
+    releaseImplementation app.leakCanaryRelease
+    implementation project(':data')
+    implementation project(':domain')
+    implementation project(path: ':mvi_core')
+}
