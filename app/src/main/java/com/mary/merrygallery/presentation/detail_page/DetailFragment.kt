@@ -1,10 +1,8 @@
 package com.mary.merrygallery.presentation.detail_page
 
-import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.recyclerview.widget.GridLayoutManager
 import com.mary.domain.APP_TAG
 import com.mary.merrygallery.MerryGalleryApp
 import com.mary.merrygallery.R
@@ -32,12 +30,7 @@ class DetailFragment : BaseFragment<DetailIntent>(), MviInitialView<DetailIntent
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        images_rv.apply {
-            adapter = imgAdapter
-            layoutManager = GridLayoutManager(requireActivity(),
-                if(resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) 4
-                else 2)
-        }
+        images_rv.adapter = imgAdapter
     }
 
     override fun onResume() {

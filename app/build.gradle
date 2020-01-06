@@ -4,11 +4,11 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         applicationId "com.mary.merrygallery"
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -28,11 +28,14 @@ dependencies {
     def common = rootProject.ext.common
     def app = rootProject.ext.app
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+
     implementation common.kotlin
     implementation common.appCompat
-    implementation app.ktx
     implementation common.rxJava
     implementation common.rxAndroid
+    implementation common.dagger
+
+    implementation app.ktx
     implementation app.rxBinding
     implementation app.rxBindingSwipe
     implementation app.navigation
@@ -44,15 +47,18 @@ dependencies {
     implementation app.recyclerView
     implementation app.constraint
     implementation app.kenBurnsView
-    implementation common.dagger
+
     kapt common.daggerAnnotation
     kapt app.daggerAndroid
     kapt app.glideProcessor
+
     testImplementation common.jUnit
     androidTestImplementation common.test
     androidTestImplementation common.espresso
+
     debugImplementation app.leakCanaryDebug
     releaseImplementation app.leakCanaryRelease
+
     implementation project(':data')
     implementation project(':domain')
     implementation project(path: ':mvi_core')

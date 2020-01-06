@@ -1,12 +1,9 @@
 package com.mary.merrygallery.presentation.dirs_page
 
-import android.content.Context
-import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.navigation.Navigation
-import androidx.recyclerview.widget.GridLayoutManager
 import com.jakewharton.rxbinding3.swiperefreshlayout.refreshes
 import com.mary.domain.APP_TAG
 import com.mary.merrygallery.MerryGalleryApp
@@ -35,12 +32,7 @@ class DirsFragment : BaseFragment<DirsIntent>(), MviInitialView<DirsIntent, Dirs
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        dirs_rv.apply {
-            adapter = dirsAdapter
-            layoutManager = GridLayoutManager(activity as Context,
-                if(resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) 4
-                else 2)
-        }
+        dirs_rv.adapter = dirsAdapter
     }
 
     override fun onResume() {

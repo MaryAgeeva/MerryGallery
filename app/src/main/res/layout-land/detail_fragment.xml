@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryLightTransparent"
     android:animateLayoutChanges="true"
-    android:id="@+id/dirs_root">
+    android:id="@+id/images_root">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/dirs_refresh_layout"
+        android:id="@+id/images_refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -17,34 +17,33 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_anchorGravity="top|center"
-            app:layout_anchor="@+id/dirs_bar">
+            app:layout_anchor="@+id/images_bar">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/dirs_rv"
+                android:id="@+id/images_rv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:spanCount="2"/>
+                app:spanCount="4" />
 
         </androidx.core.widget.NestedScrollView>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/dirs_bar"
+        android:id="@+id/images_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbar_size"
         android:layout_gravity="bottom"
-        app:fabAlignmentMode="center"
+        app:fabAlignmentMode="end"
         app:hideOnScroll="true"
         android:backgroundTint="@color/colorPrimary"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/dirs_add_fab"
+        android:id="@+id/images_add_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_anchor="@id/dirs_bar"
-        app:layout_anchorGravity="bottom|center"
-        android:src="@drawable/ic_add"/>
+        app:layout_anchor="@id/images_bar"
+        app:layout_anchorGravity="bottom|end"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

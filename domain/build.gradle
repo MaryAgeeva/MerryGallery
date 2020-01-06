@@ -3,16 +3,15 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
 
     buildTypes {
@@ -26,12 +25,13 @@ android {
 dependencies {
     def common = rootProject.ext.common
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     implementation common.kotlin
+    implementation common.appCompat
 
     implementation common.rxJava
     implementation common.dagger
 
-    implementation common.appCompat
     testImplementation common.jUnit
     androidTestImplementation common.test
     androidTestImplementation common.espresso
