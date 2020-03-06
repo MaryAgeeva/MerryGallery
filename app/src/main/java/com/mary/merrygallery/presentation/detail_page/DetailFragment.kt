@@ -29,7 +29,6 @@ class DetailFragment : BaseFragment<DetailIntent>(), MviInitialView<DetailIntent
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         images_rv.adapter = imgAdapter
     }
 

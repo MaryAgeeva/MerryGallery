@@ -31,7 +31,6 @@ class DirsFragment : BaseFragment<DirsIntent>(), MviInitialView<DirsIntent, Dirs
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         dirs_rv.adapter = dirsAdapter
     }
 
@@ -52,12 +51,11 @@ class DirsFragment : BaseFragment<DirsIntent>(), MviInitialView<DirsIntent, Dirs
 
     override fun render(state: DirsViewState) {
         dirs_refresh_layout.isRefreshing = false
-        if(state.data.isNotEmpty())
-            dirsAdapter.setList(state.data)
-        else if(state.error != null)
-            showSnack(dirs_root, getString(R.string.dirs_error_db))
-        if(state.openDir != null)
-            openDirectory(state.openDir)
+        when {
+            state.data.isNotEmpty() -> dirsAdapter.setList(state.data)
+            !state.error.isNullOrEmpty() -> showSnack(dirs_root, getString(R.string.dirs_error_db))
+            state.openDir != null -> openDirectory(state.openDir)
+        }
     }
 
     override fun processInteractions() {

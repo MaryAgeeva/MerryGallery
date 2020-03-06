@@ -47,6 +47,8 @@ dependencies {
     implementation app.recyclerView
     implementation app.constraint
     implementation app.kenBurnsView
+    implementation app.paging
+    implementation app.pagingRx
 
     kapt common.daggerAnnotation
     kapt app.daggerAndroid

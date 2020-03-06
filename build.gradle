@@ -19,45 +19,48 @@ buildscript {
         lifecycle = '2.0.0-beta01'
         viewModel = '2.0.0'
         ktx = '1.2.0-alpha01'
+        paging = '2.1.1'
 
         common = [
-            rxAndroid: "io.reactivex.rxjava2:rxandroid:$rxAndroid",
-            rxJava: "io.reactivex.rxjava2:rxjava:$rxJava",
+            rxAndroid       : "io.reactivex.rxjava2:rxandroid:$rxAndroid",
+            rxJava          : "io.reactivex.rxjava2:rxjava:$rxJava",
             daggerAnnotation: "com.google.dagger:dagger-compiler:$dagger",
-            dagger: "com.google.dagger:dagger:$dagger",
-            espresso: "androidx.test.espresso:espresso-core:$espresso",
-            test: "androidx.test:runner:$test",
-            appCompat: "androidx.appcompat:appcompat:$androidX",
-            jUnit: "junit:junit:$jUnit",
-            kotlin: "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+            dagger          : "com.google.dagger:dagger:$dagger",
+            espresso        : "androidx.test.espresso:espresso-core:$espresso",
+            test            : "androidx.test:runner:$test",
+            appCompat       : "androidx.appcompat:appcompat:$androidX",
+            jUnit           : "junit:junit:$jUnit",
+            kotlin          : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
         ]
 
         app = [
-            ktx: "androidx.core:core-ktx:$ktx",
-            constraint: "androidx.constraintlayout:constraintlayout:$constraint",
-            recyclerView: "androidx.recyclerview:recyclerview:$androidX",
-            rxBinding: "com.jakewharton.rxbinding3:rxbinding:$rxBinding",
-            rxBindingRv: "com.jakewharton.rxbinding3:rxbinding-recyclerview:$rxBinding",
-            rxBindingSwipe: "com.jakewharton.rxbinding3:rxbinding-swiperefreshlayout:$rxBinding",
-            navigation: "androidx.navigation:navigation-fragment:$nav",
-            navigationUi: "androidx.navigation:navigation-ui:$nav",
-            glide: "com.github.bumptech.glide:glide:$glide",
-            material: "com.google.android.material:material:$material",
-            palette: "androidx.palette:palette:$androidX",
-            lifecycle: "androidx.lifecycle:lifecycle-extensions:$lifecycle",
-            viewModel: "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModel",
-            daggerAndroid: "com.google.dagger:dagger-android-processor:$dagger",
-            glideProcessor: "com.github.bumptech.glide:compiler:$glide",
-            leakCanaryDebug: "com.squareup.leakcanary:leakcanary-android:$leakCanary",
+            ktx             : "androidx.core:core-ktx:$ktx",
+            constraint      : "androidx.constraintlayout:constraintlayout:$constraint",
+            recyclerView    : "androidx.recyclerview:recyclerview:$androidX",
+            rxBinding       : "com.jakewharton.rxbinding3:rxbinding:$rxBinding",
+            rxBindingRv     : "com.jakewharton.rxbinding3:rxbinding-recyclerview:$rxBinding",
+            rxBindingSwipe  : "com.jakewharton.rxbinding3:rxbinding-swiperefreshlayout:$rxBinding",
+            navigation      : "androidx.navigation:navigation-fragment:$nav",
+            navigationUi    : "androidx.navigation:navigation-ui:$nav",
+            glide           : "com.github.bumptech.glide:glide:$glide",
+            material        : "com.google.android.material:material:$material",
+            palette         : "androidx.palette:palette:$androidX",
+            lifecycle       : "androidx.lifecycle:lifecycle-extensions:$lifecycle",
+            viewModel       : "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModel",
+            daggerAndroid   : "com.google.dagger:dagger-android-processor:$dagger",
+            glideProcessor  : "com.github.bumptech.glide:compiler:$glide",
+            leakCanaryDebug : "com.squareup.leakcanary:leakcanary-android:$leakCanary",
             leakCanaryRelease: "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanary",
-            kenBurnsView: "com.flaviofaria:kenburnsview:$kenBurnsView"
+            kenBurnsView    : "com.flaviofaria:kenburnsview:$kenBurnsView",
+            paging          : "androidx.paging:paging-runtime:$paging",
+            pagingRx        : "androidx.paging:paging-rxjava2:$paging"
         ]
 
         data = [
-            roomRx: "androidx.room:room-rxjava2:$room",
-            room: "androidx.room:room-runtime:$room",
-            roomProcessor: "androidx.room:room-compiler:$room",
-            roomtest: "androidx.room:room-testing:$room"
+            roomRx          : "androidx.room:room-rxjava2:$room",
+            room            : "androidx.room:room-runtime:$room",
+            roomProcessor   : "androidx.room:room-compiler:$room",
+            roomtest        : "androidx.room:room-testing:$room"
         ]
     }
     repositories {
@@ -67,7 +70,7 @@ buildscript {
         maven { url 'https://maven.google.com'}
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.1'
+        classpath 'com.android.tools.build:gradle:3.5.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
