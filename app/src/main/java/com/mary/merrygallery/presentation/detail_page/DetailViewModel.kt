@@ -1,17 +1,18 @@
 package com.mary.merrygallery.presentation.detail_page
 
 import android.util.Log
+import androidx.lifecycle.ViewModel
 import com.mary.domain.APP_TAG
-import com.mary.merrygallery.di.scopes.DetailScope
 import com.mary.mvi_core.MviStore
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.subjects.PublishSubject
 import javax.inject.Inject
 
-@DetailScope
-class DetailViewModel @Inject constructor(private val middleware: DetailMiddleware,
-                                          private val reducer: DetailReducer) : MviStore<DetailIntent, DetailViewState> {
+class DetailViewModel @Inject constructor(
+    private val middleware: DetailMiddleware,
+    private val reducer: DetailReducer
+) : ViewModel(), MviStore<DetailIntent, DetailViewState> {
 
     private val state = PublishSubject.create<DetailViewState>()
 

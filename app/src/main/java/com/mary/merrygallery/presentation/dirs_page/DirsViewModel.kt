@@ -1,6 +1,7 @@
 package com.mary.merrygallery.presentation.dirs_page
 
 import android.util.Log
+import androidx.lifecycle.ViewModel
 import com.mary.domain.APP_TAG
 import com.mary.merrygallery.di.scopes.DirsScope
 import com.mary.mvi_core.MviStore
@@ -10,8 +11,10 @@ import io.reactivex.subjects.PublishSubject
 import javax.inject.Inject
 
 @DirsScope
-class DirsViewModel @Inject constructor(private val middleware: DirsMiddleware,
-                                        private val reducer: DirsReducer) : MviStore<DirsIntent, DirsViewState> {
+class DirsViewModel @Inject constructor(
+    private val middleware: DirsMiddleware,
+    private val reducer: DirsReducer
+) : ViewModel(), MviStore<DirsIntent, DirsViewState> {
 
     private val state = PublishSubject.create<DirsViewState>()
 

@@ -3,19 +3,27 @@ package com.mary.merrygallery.presentation.detail_page
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.lifecycle.ViewModelProvider
 import com.mary.domain.APP_TAG
 import com.mary.merrygallery.MerryGalleryApp
 import com.mary.merrygallery.R
+import com.mary.merrygallery.di.modules.DETAIL_VIEW_MODEL_NAME
 import com.mary.merrygallery.presentation.base.BaseFragment
 import com.mary.merrygallery.presentation.detail_page.adapter.ImagesAdapter
+import com.mary.merrygallery.utils.getViewModel
 import com.mary.mvi_core.MviInitialView
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.detail_fragment.*
 import javax.inject.Inject
+import javax.inject.Named
 
 class DetailFragment : BaseFragment<DetailIntent>(), MviInitialView<DetailIntent, DetailViewState, DetailIntent.GetData> {
 
-    @Inject lateinit var store : DetailViewModel
+    @Inject
+    @Named(DETAIL_VIEW_MODEL_NAME)
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private lateinit var store : DetailViewModel
 
     private val imgAdapter = ImagesAdapter()
     private val dirId by lazy { arguments?.getInt(DIR_ID)?: 0 }
@@ -29,6 +37,8 @@ class DetailFragment : BaseFragment<DetailIntent>(), MviInitialView<DetailIntent
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        store = getViewModel(viewModelFactory)
         images_rv.adapter = imgAdapter
     }
 
